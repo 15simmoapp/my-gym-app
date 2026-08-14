@@ -1,10 +1,186 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Gym App Test</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Matthew's Lean Bulk Tracker</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#111827;
+    color:white;
+}
+
+.header{
+    background:#1f2937;
+    padding:20px;
+    text-align:center;
+    border-bottom:2px solid #374151;
+}
+
+.header h1{
+    margin:0;
+}
+
+.header p{
+    color:#9ca3af;
+}
+
+.container{
+    padding:15px;
+}
+
+.card{
+    background:#1f2937;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.stat{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.green{
+    color:#22c55e;
+}
+
+.blue{
+    color:#3b82f6;
+}
+
+.button{
+    display:block;
+    width:100%;
+    text-align:center;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    padding:15px;
+    border-radius:10px;
+    margin-top:10px;
+    box-sizing:border-box;
+}
+
+.exercise{
+    background:#374151;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+
+h2{
+    margin-top:0;
+}
+
+.nav{
+    position:sticky;
+    bottom:0;
+    display:flex;
+    background:#1f2937;
+    border-top:1px solid #374151;
+}
+
+.nav div{
+    flex:1;
+    text-align:center;
+    padding:15px;
+}
+</style>
+
 </head>
+
 <body>
-<h1>Matthew's Gym App</h1>
-<p>If you can see this, GitHub Pages is working correctly.</p>
+
+<div class="header">
+<h1>Matthew's Lean Bulk Tracker</h1>
+<p>Age 47 | 87kg | 5'11"</p>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h2>Current Status</h2>
+
+<div class="stat green">
+87.0kg
+</div>
+
+<p>Goal: Lean Bulk</p>
+<p>Training: 3 Gym Sessions + Parkrun + MTB</p>
+
+<p class="green">
+🟢 On Track
+</p>
+</div>
+
+<div class="card">
+<h2>Next Workout</h2>
+
+<div class="exercise">
+🏋️ Session 1 - Legs
+</div>
+
+<a class="button">Start Workout</a>
+
+</div>
+
+<div class="card">
+<h2>Programme Overview</h2>
+
+<div class="exercise">
+Back Squat<br>
+Leg Press<br>
+Walking Lunges<br>
+Romanian Deadlift
+</div>
+
+<div class="exercise">
+Bench Press<br>
+Incline DB Press<br>
+Shoulder Press<br>
+Biceps Block
+</div>
+
+<div class="exercise">
+Front Squat<br>
+Hack Squat<br>
+Leg Curl<br>
+Upper Hypertrophy
+</div>
+
+</div>
+
+<div class="card">
+<h2>Personal Bests</h2>
+
+<p>🏆 Bench Press: 100kg</p>
+<p>🏆 Squat: 140kg</p>
+<p>🏆 Romanian Deadlift: 150kg</p>
+
+</div>
+
+<div class="card">
+<h2>Recovery</h2>
+
+<p>✅ Parkrun</p>
+<p>✅ MTB</p>
+<p>✅ Full Gym Access</p>
+
+</div>
+
+</div>
+
+<div class="nav">
+<div>Dashboard</div>
+<div>Workouts</div>
+<div>Progress</div>
+</div>
+
 </body>
 </html>
