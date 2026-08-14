@@ -1,186 +1,102 @@
-<!DOCTYPE html>
+bash -lc cat > /mnt/data/index.html <<'HTML'
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1220">
 <title>Matthew's Lean Bulk Tracker</title>
-
 <style>
-
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#111827;
-    color:white;
-}
-
-.header{
-    background:#1f2937;
-    padding:20px;
-    text-align:center;
-    border-bottom:2px solid #374151;
-}
-
-.header h1{
-    margin:0;
-}
-
-.header p{
-    color:#9ca3af;
-}
-
-.container{
-    padding:15px;
-}
-
-.card{
-    background:#1f2937;
-    padding:15px;
-    border-radius:15px;
-    margin-bottom:15px;
-}
-
-.stat{
-    font-size:28px;
-    font-weight:bold;
-}
-
-.green{
-    color:#22c55e;
-}
-
-.blue{
-    color:#3b82f6;
-}
-
-.button{
-    display:block;
-    width:100%;
-    text-align:center;
-    background:#2563eb;
-    color:white;
-    text-decoration:none;
-    padding:15px;
-    border-radius:10px;
-    margin-top:10px;
-    box-sizing:border-box;
-}
-
-.exercise{
-    background:#374151;
-    padding:12px;
-    border-radius:10px;
-    margin-bottom:10px;
-}
-
-h2{
-    margin-top:0;
-}
-
-.nav{
-    position:sticky;
-    bottom:0;
-    display:flex;
-    background:#1f2937;
-    border-top:1px solid #374151;
-}
-
-.nav div{
-    flex:1;
-    text-align:center;
-    padding:15px;
-}
+:root{--bg:#0b1220;--panel:#162133;--panel2:#202d42;--text:#f6f8fc;--muted:#9dafc7;--blue:#3b82f6;--green:#22c55e;--amber:#f59e0b;--red:#ef4444;--line:#31415a;--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#0b1220 0%,#111a2a 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh;-webkit-tap-highlight-color:transparent}
+button,input,select,textarea{font:inherit}.app{max-width:720px;margin:auto;padding:0 14px calc(98px + env(safe-area-inset-bottom))}.top{position:sticky;top:0;z-index:20;background:rgba(11,18,32,.94);backdrop-filter:blur(14px);padding:16px 0 12px;border-bottom:1px solid rgba(255,255,255,.05)}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand h1{font-size:21px;margin:0}.sub{color:var(--muted);font-size:13px;margin-top:3px}.badge{border-radius:999px;padding:7px 10px;background:rgba(34,197,94,.13);color:#7ee7a0;font-size:12px;font-weight:800}
+.page{display:none;padding-top:14px}.page.active{display:block}.hero{background:linear-gradient(135deg,#1e3a8a,#2563eb);border-radius:22px;padding:20px;box-shadow:0 14px 35px rgba(0,0,0,.2)}.hero .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.1em;opacity:.78}.hero .big{font-size:38px;font-weight:850;margin:4px 0}.hero p{margin:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}.card{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:16px;margin-bottom:12px;box-shadow:0 8px 24px rgba(0,0,0,.12)}.card h2,.card h3{margin:0 0 10px}.kpi{font-size:25px;font-weight:850}.muted{color:var(--muted)}.small{font-size:12px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.stack{display:grid;gap:10px}
+.btn{border:0;border-radius:14px;padding:14px 16px;background:var(--blue);color:white;font-weight:800;cursor:pointer;min-height:50px}.btn:active{transform:scale(.985)}.btn.secondary{background:var(--panel2);border:1px solid var(--line)}.btn.danger{background:#7f1d1d}.btn.ghost{background:transparent;border:1px solid var(--line)}.btn.full{width:100%}.session{display:flex;align-items:center;gap:13px;padding:14px;background:var(--panel2);border-radius:15px;margin:10px 0;cursor:pointer}.session .icon{width:44px;height:44px;display:grid;place-items:center;background:#263a59;border-radius:13px;font-size:21px}.session .grow{flex:1}.session strong{display:block}.session span{font-size:13px;color:var(--muted)}
+.exercise{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:15px;margin:12px 0}.exercise.done{border-color:rgba(34,197,94,.65)}.exercise-head{display:flex;justify-content:space-between;gap:10px}.exercise h3{font-size:18px;margin:0}.target{color:var(--muted);font-size:13px;margin:4px 0 12px}.inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px}.field label{display:block;font-size:11px;color:var(--muted);margin:0 0 5px}.field input,.field select,.field textarea,.input{width:100%;background:#0d1727;color:white;border:1px solid var(--line);border-radius:12px;padding:12px;outline:none;min-height:46px}.field input:focus,.field textarea:focus,.input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,130,246,.15)}.field textarea{min-height:70px;resize:vertical}.tip{margin-top:10px;padding:10px 12px;border-radius:11px;background:#10213c;color:#b8d4ff;font-size:12px}.progressbar{height:9px;background:#0d1727;border-radius:999px;overflow:hidden}.progressbar i{display:block;height:100%;background:linear-gradient(90deg,#3b82f6,#22c55e);width:0;transition:width .25s}.rag{padding:5px 9px;border-radius:999px;font-size:11px;font-weight:850}.rag.green{background:rgba(34,197,94,.15);color:#86efac}.rag.amber{background:rgba(245,158,11,.16);color:#fcd34d}.rag.red{background:rgba(239,68,68,.15);color:#fca5a5}.rag.grey{background:#2c3a50;color:#c5d0df}
+.bottom{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(14,23,38,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:8px max(10px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))}.nav{max-width:720px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.nav button{border:0;background:transparent;color:var(--muted);padding:8px 2px;border-radius:12px;font-size:11px;font-weight:750}.nav button b{display:block;font-size:20px;line-height:1.1;margin-bottom:3px}.nav button.active{color:white;background:#23324a}.toast{position:fixed;left:50%;bottom:100px;transform:translate(-50%,20px);opacity:0;z-index:50;background:#eaf2ff;color:#10213c;padding:11px 15px;border-radius:12px;font-weight:800;transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+.timer{font-size:40px;font-weight:900;letter-spacing:.04em}.weeklog{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}.empty{text-align:center;color:var(--muted);padding:25px 8px}.modal{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.7);display:none;align-items:flex-end}.modal.show{display:flex}.sheet{width:100%;max-width:720px;margin:auto;background:#121d2e;border-radius:24px 24px 0 0;padding:20px 16px calc(20px + env(safe-area-inset-bottom));max-height:86vh;overflow:auto}.sheet h2{margin-top:0}.notice{font-size:12px;color:var(--muted);line-height:1.5}.check{width:31px;height:31px;border-radius:10px;border:1px solid var(--line);background:#101a2a;color:white;font-size:18px}.check.on{background:var(--green);border-color:var(--green)}
+@media(max-width:440px){.inputs{grid-template-columns:1fr 1fr}.inputs .field:last-child{grid-column:1/-1}.grid{grid-template-columns:1fr 1fr}.hero .big{font-size:34px}}
 </style>
-
 </head>
-
 <body>
+<div class="app">
+<header class="top"><div class="brand"><div><h1>Matthew's Lean Bulk Tracker</h1><div class="sub">3-day gym programme • local phone storage</div></div><span class="badge">LEAN BULK</span></div></header>
 
-<div class="header">
-<h1>Matthew's Lean Bulk Tracker</h1>
-<p>Age 47 | 87kg | 5'11"</p>
+<main>
+<section id="home" class="page active">
+  <div class="hero"><div class="eyebrow">Current bodyweight</div><div class="big"><span id="homeWeight">87.0</span> kg</div><p id="weightTrend">Starting point recorded</p></div>
+  <div class="grid"><div class="card"><div class="muted small">Sessions completed</div><div class="kpi" id="sessionsCount">0</div></div><div class="card"><div class="muted small">Next session</div><div class="kpi" id="nextSessionKpi">1</div></div></div>
+  <div class="card"><div class="row"><div><h2>Next workout</h2><div class="muted" id="nextWorkoutName">Session 1 • Legs (Thigh Priority)</div></div><span id="homeRag" class="rag grey">Ready</span></div><button class="btn full" style="margin-top:14px" onclick="startNext()">Start workout</button></div>
+  <div class="card"><h2>Quick check-in</h2><div class="inputs"><div class="field"><label>Bodyweight (kg)</label><input id="quickWeight" type="number" inputmode="decimal" step="0.1" placeholder="87.0"></div><div class="field"><label>Recovery</label><select id="recovery"><option>Good</option><option>Average</option><option>Low</option></select></div><div class="field"><label>Outside activity</label><select id="activity"><option>None</option><option>Parkrun</option><option>MTB</option><option>Parkrun + MTB</option></select></div></div><button class="btn secondary full" style="margin-top:10px" onclick="saveCheckin()">Save check-in</button></div>
+  <div class="card"><h2>Rest timer</h2><div class="row"><div class="timer" id="timerHome">02:00</div><div class="stack"><button class="btn secondary" onclick="setTimer(120)">2 min</button><button class="btn secondary" onclick="setTimer(180)">3 min</button></div></div><div class="row" style="margin-top:10px"><button class="btn full" onclick="toggleTimer()" id="timerBtn">Start</button><button class="btn ghost" onclick="resetTimer()">Reset</button></div></div>
+</section>
+
+<section id="workouts" class="page">
+  <div class="card"><h2>Choose a session</h2><p class="muted">Tap a session to log today's working load and completed reps.</p><div id="sessionList"></div></div>
+</section>
+
+<section id="activeWorkout" class="page">
+  <div class="card"><div class="row"><div><div class="muted small">ACTIVE WORKOUT</div><h2 id="activeTitle">Session</h2></div><button class="btn ghost" onclick="go('workouts')">Exit</button></div><div class="row"><span id="completionLabel" class="muted">0 of 0 complete</span><span id="workoutRag" class="rag grey">In progress</span></div><div class="progressbar" style="margin-top:10px"><i id="completionBar"></i></div></div>
+  <div id="exerciseList"></div>
+  <button class="btn full" onclick="finishWorkout()">Finish and save workout</button>
+</section>
+
+<section id="progress" class="page">
+  <div class="card"><h2>Bodyweight trend</h2><div class="kpi"><span id="progressWeight">87.0</span> kg</div><div class="muted" id="progressTrend">Add check-ins to see the trend.</div><div id="weightHistory" style="margin-top:12px"></div></div>
+  <div class="card"><h2>Exercise progress</h2><div id="exerciseProgress"></div></div>
+</section>
+
+<section id="more" class="page">
+  <div class="card"><h2>Your profile</h2><div class="stack"><div class="row"><span>Starting weight</span><strong>87 kg</strong></div><div class="row"><span>Height</span><strong>5'11&quot;</strong></div><div class="row"><span>Age</span><strong>47</strong></div><div class="row"><span>Goal</span><strong>Lean bulk</strong></div><div class="row"><span>Training</span><strong>3 gym sessions/week</strong></div></div></div>
+  <div class="card"><h2>Data</h2><p class="muted">Your entries are saved in this browser on this device. Export a backup periodically.</p><div class="stack"><button class="btn secondary full" onclick="exportData()">Export backup</button><label class="btn secondary full" style="text-align:center">Import backup<input type="file" accept="application/json" hidden onchange="importData(event)"></label><button class="btn danger full" onclick="clearData()">Clear all app data</button></div></div>
+  <div class="card"><h2>Using the tracker</h2><p class="notice">Enter a numeric load and select a suitable unit. For machines, use a numeric plate or stack setting. Log the completed reps for the working sets. Progress status compares the latest entry with the previous entry. The tracker supports consistent recording but does not replace professional coaching or clinical advice. Stop training and seek appropriate advice if you experience sharp pain, dizziness or unusual symptoms.</p></div>
+</section>
+</main>
 </div>
 
-<div class="container">
+<nav class="bottom"><div class="nav"><button class="active" data-page="home" onclick="go('home')"><b>⌂</b>Home</button><button data-page="workouts" onclick="go('workouts')"><b>🏋</b>Workouts</button><button data-page="progress" onclick="go('progress')"><b>↗</b>Progress</button><button data-page="more" onclick="go('more')"><b>☰</b>More</button></div></nav>
+<div class="toast" id="toast"></div>
 
-<div class="card">
-<h2>Current Status</h2>
-
-<div class="stat green">
-87.0kg
-</div>
-
-<p>Goal: Lean Bulk</p>
-<p>Training: 3 Gym Sessions + Parkrun + MTB</p>
-
-<p class="green">
-🟢 On Track
-</p>
-</div>
-
-<div class="card">
-<h2>Next Workout</h2>
-
-<div class="exercise">
-🏋️ Session 1 - Legs
-</div>
-
-<a class="button">Start Workout</a>
-
-</div>
-
-<div class="card">
-<h2>Programme Overview</h2>
-
-<div class="exercise">
-Back Squat<br>
-Leg Press<br>
-Walking Lunges<br>
-Romanian Deadlift
-</div>
-
-<div class="exercise">
-Bench Press<br>
-Incline DB Press<br>
-Shoulder Press<br>
-Biceps Block
-</div>
-
-<div class="exercise">
-Front Squat<br>
-Hack Squat<br>
-Leg Curl<br>
-Upper Hypertrophy
-</div>
-
-</div>
-
-<div class="card">
-<h2>Personal Bests</h2>
-
-<p>🏆 Bench Press: 100kg</p>
-<p>🏆 Squat: 140kg</p>
-<p>🏆 Romanian Deadlift: 150kg</p>
-
-</div>
-
-<div class="card">
-<h2>Recovery</h2>
-
-<p>✅ Parkrun</p>
-<p>✅ MTB</p>
-<p>✅ Full Gym Access</p>
-
-</div>
-
-</div>
-
-<div class="nav">
-<div>Dashboard</div>
-<div>Workouts</div>
-<div>Progress</div>
-</div>
-
+<script>
+const PROGRAM=[
+ {id:1,name:'Legs (Thigh Priority)',icon:'🦵',ex:[['Back Squat',4,'6–8','1–2','Add 2.5–5 kg when you hit 8'],['Leg Press',3,'10–12','1–2','Add plates when you hit 12'],['Walking Lunges',3,'12 each','1','Add reps first, then weight'],['Leg Extension',3,'15–20','0–1','Add plate when you hit 20'],['Romanian Deadlift',3,'8–10','1–2','Add 2.5–5 kg when you hit 10'],['Calf Raise',3,'12–15','1','Add plate when you hit 15']]},
+ {id:2,name:'Chest / Shoulders / Biceps',icon:'💪',ex:[['Bench Press',4,'5–7','1–2','Add 2.5 kg when you hit 7'],['Incline DB Press',3,'8–10','1–2','Add 2 kg per DB when you hit 10'],['Chest Fly Machine',3,'12–15','0–1','Add plate when you hit 15'],['Seated Shoulder Press',4,'6–8','1–2','Add 2 kg per DB when you hit 8'],['Lateral Raises',3,'15–20','0–1','Add 1–2 kg when you hit 20'],['Face Pulls',3,'12–15','1','Add plate when you hit 15'],['EZ Bar Curl',3,'8–10','1','Add plate when you hit 10'],['Incline DB Curl',2,'10–12','0–1','Add 1–2 kg when you hit 12'],['Cable Hammer Curl',2,'12–15','0–1','Add plate when you hit 15']]},
+ {id:3,name:'Legs + Upper Hypertrophy',icon:'🔥',ex:[['Front Squat',3,'6–8','1–2','Add 2.5–5 kg when you hit 8'],['Hack Squat',3,'10–12','1–2','Add plate when you hit 12'],['Leg Curl',3,'12–15','0–1','Add plate when you hit 15'],['Incline Cable Fly',3,'12–15','0–1','Add plate when you hit 15'],['Machine Shoulder Press',3,'10–12','1','Add plate when you hit 12'],['High-rep Laterals',2,'20–25','0','Add 1 kg when you hit 25']]}
+];
+const KEY='matthewLeanBulkV1';
+let data=JSON.parse(localStorage.getItem(KEY)||'{"workouts":[],"weights":[{"date":"Start","weight":87}],"nextSession":1}');
+let currentSession=null, draft={};
+function persist(){localStorage.setItem(KEY,JSON.stringify(data))}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='home')renderHome();if(id==='progress')renderProgress();window.scrollTo({top:0,behavior:'smooth'})}
+function renderSessions(){document.getElementById('sessionList').innerHTML=PROGRAM.map(s=>`<div class="session" onclick="openSession(${s.id})"><div class="icon">${s.icon}</div><div class="grow"><strong>Session ${s.id} • ${s.name}</strong><span>${s.ex.length} exercises</span></div><strong>›</strong></div>`).join('')}
+function latestFor(name){for(let i=data.workouts.length-1;i>=0;i--){const x=data.workouts[i].exercises.find(e=>e.name===name);if(x)return x}return null}
+function previousFor(name){let found=[];for(let i=data.workouts.length-1;i>=0;i--){const x=data.workouts[i].exercises.find(e=>e.name===name);if(x)found.push(x);if(found.length===2)break}return found}
+function openSession(id){currentSession=PROGRAM.find(s=>s.id===id);draft={};document.getElementById('activeTitle').textContent=`Session ${id} • ${currentSession.name}`;document.getElementById('exerciseList').innerHTML=currentSession.ex.map((e,i)=>{const last=latestFor(e[0]);return `<article class="exercise" id="ex${i}"><div class="exercise-head"><div><h3>${e[0]}</h3><div class="target">${e[1]} sets • ${e[2]} reps • RIR ${e[3]}</div></div><button class="check" onclick="toggleDone(${i})" aria-label="Mark complete">✓</button></div><div class="inputs"><div class="field"><label>Load</label><input id="load${i}" type="number" inputmode="decimal" step="0.5" value="${last?last.load:''}" oninput="capture(${i})"></div><div class="field"><label>Completed reps</label><input id="reps${i}" type="number" inputmode="numeric" value="${last?last.reps:''}" oninput="capture(${i})"></div><div class="field"><label>Unit</label><select id="unit${i}" onchange="capture(${i})"><option ${!last||last.unit==='kg'?'selected':''}>kg</option><option ${last&&last.unit==='lb'?'selected':''}>lb</option><option ${last&&last.unit==='Plate'?'selected':''}>Plate</option><option ${last&&last.unit==='Stack'?'selected':''}>Stack</option><option ${last&&last.unit==='Bodyweight'?'selected':''}>Bodyweight</option></select></div></div><div class="field" style="margin-top:9px"><label>Notes</label><textarea id="notes${i}" placeholder="Optional" oninput="capture(${i})"></textarea></div><div class="tip">${last?`Last: ${last.load} ${last.unit} × ${last.reps} reps. `:'No previous entry. '}${e[4]}</div></article>`}).join('');updateCompletion();go('activeWorkout')}
+function capture(i){draft[i]=draft[i]||{};draft[i].load=document.getElementById('load'+i).value;draft[i].reps=document.getElementById('reps'+i).value;draft[i].unit=document.getElementById('unit'+i).value;draft[i].notes=document.getElementById('notes'+i).value}
+function toggleDone(i){capture(i);draft[i].done=!draft[i].done;document.getElementById('ex'+i).classList.toggle('done',draft[i].done);document.querySelector('#ex'+i+' .check').classList.toggle('on',draft[i].done);updateCompletion()}
+function updateCompletion(){const n=currentSession?currentSession.ex.length:0;const done=Object.values(draft).filter(x=>x.done).length;document.getElementById('completionLabel').textContent=`${done} of ${n} complete`;document.getElementById('completionBar').style.width=(n?done/n*100:0)+'%'}
+function finishWorkout(){const complete=currentSession.ex.map((e,i)=>{capture(i);return {name:e[0],sets:e[1],target:e[2],rir:e[3],load:Number(draft[i]?.load||0),reps:Number(draft[i]?.reps||0),unit:draft[i]?.unit||'kg',notes:draft[i]?.notes||'',done:!!draft[i]?.done}}).filter(x=>x.load>0||x.reps>0||x.done);if(!complete.length){toast('Enter at least one exercise');return}data.workouts.push({date:new Date().toISOString(),sessionId:currentSession.id,sessionName:currentSession.name,exercises:complete});data.nextSession=currentSession.id===3?1:currentSession.id+1;persist();toast('Workout saved');go('home')}
+function startNext(){openSession(data.nextSession||1)}
+function saveCheckin(){const val=Number(document.getElementById('quickWeight').value);if(val>0)data.weights.push({date:new Date().toISOString(),weight:val,recovery:document.getElementById('recovery').value,activity:document.getElementById('activity').value});else{toast('Enter a bodyweight');return}persist();document.getElementById('quickWeight').value='';toast('Check-in saved');renderHome()}
+function renderHome(){const w=data.weights.at(-1)?.weight||87;document.getElementById('homeWeight').textContent=w.toFixed(1);document.getElementById('sessionsCount').textContent=data.workouts.length;document.getElementById('nextSessionKpi').textContent=data.nextSession||1;const s=PROGRAM.find(x=>x.id===(data.nextSession||1));document.getElementById('nextWorkoutName').textContent=`Session ${s.id} • ${s.name}`;if(data.weights.length>1){const d=w-data.weights[0].weight;document.getElementById('weightTrend').textContent=`${d>=0?'+':''}${d.toFixed(1)} kg from starting point`}else document.getElementById('weightTrend').textContent='Starting point recorded'}
+function ragFor(a,b){if(!a||!b)return ['grey','No comparison'];if(a.load>b.load||(a.load===b.load&&a.reps>b.reps))return ['green','Up'];if(a.load===b.load&&a.reps===b.reps)return ['amber','Same'];return ['red','Down']}
+function renderProgress(){const w=data.weights.at(-1)?.weight||87;document.getElementById('progressWeight').textContent=w.toFixed(1);document.getElementById('progressTrend').textContent=data.weights.length>1?`${(w-data.weights[0].weight)>=0?'+':''}${(w-data.weights[0].weight).toFixed(1)} kg from starting point`:'Add check-ins to see the trend.';document.getElementById('weightHistory').innerHTML=data.weights.slice(-5).reverse().map(x=>`<div class="weeklog"><span>${x.date==='Start'?'Starting point':new Date(x.date).toLocaleDateString('en-GB')}</span><strong>${x.weight.toFixed(1)} kg</strong><span class="muted small">${x.activity||''}</span></div>`).join('');const names=[...new Set(data.workouts.flatMap(w=>w.exercises.map(e=>e.name)))];document.getElementById('exerciseProgress').innerHTML=names.length?names.map(n=>{const [a,b]=previousFor(n),r=ragFor(a,b);return `<div class="weeklog"><span>${n}</span><strong>${a.load} ${a.unit} × ${a.reps}</strong><span class="rag ${r[0]}">${r[1]}</span></div>`}).join(''):'<div class="empty">Complete a workout to populate exercise progress.</div>'}
+let timerSeconds=120,timerRunning=false,timerHandle=null;function paintTimer(){let m=Math.floor(timerSeconds/60),s=timerSeconds%60;document.getElementById('timerHome').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`}function setTimer(s){timerSeconds=s;timerRunning=false;clearInterval(timerHandle);document.getElementById('timerBtn').textContent='Start';paintTimer()}function toggleTimer(){timerRunning=!timerRunning;document.getElementById('timerBtn').textContent=timerRunning?'Pause':'Start';clearInterval(timerHandle);if(timerRunning)timerHandle=setInterval(()=>{timerSeconds--;paintTimer();if(timerSeconds<=0){clearInterval(timerHandle);timerRunning=false;document.getElementById('timerBtn').textContent='Start';navigator.vibrate?.([300,150,300]);toast('Rest complete')}},1000)}function resetTimer(){setTimer(120)}
+function exportData(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='lean-bulk-backup.json';a.click();URL.revokeObjectURL(a.href)}
+function importData(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{data=JSON.parse(r.result);persist();renderHome();toast('Backup imported')}catch{toast('That backup could not be read')}};r.readAsText(f)}
+function clearData(){if(confirm('Clear all saved workouts and check-ins from this device?')){localStorage.removeItem(KEY);data={workouts:[],weights:[{date:'Start',weight:87}],nextSession:1};persist();renderHome();toast('App data cleared')}}
+renderSessions();renderHome();paintTimer();
+</script>
 </body>
 </html>
+HTML
+python - <<'PY'
+from pathlib import Path
+p=Path('/mnt/data/index.html')
+s=p.read_text()
+assert '<!doctype html>' in s and 'localStorage' in s and 'finishWorkout' in s
+print('Created',p,'bytes',p.stat().st_size,'lines',len(s.splitlines()))
+PY
