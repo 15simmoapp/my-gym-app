@@ -51,7 +51,7 @@ function showBlockSelector(blocks) {
 
 function selectBlock(blockName, blocks) {
 
-  // BLOCK LOCKING — prevents switching mid-block
+  // Prevent switching mid-block
   if (Number(localStorage.getItem("currentWeek")) > 1) {
     alert("Block already in progress. Finish the current block before switching.");
     return;
@@ -85,7 +85,7 @@ async function showWorkoutSelector() {
 }
 
 // -------------------------------
-// LOAD WORKOUT (FULL STEP 4 + 5 VERSION)
+// LOAD WORKOUT
 // -------------------------------
 
 async function loadWorkout(day) {
@@ -106,7 +106,7 @@ async function loadWorkout(day) {
     <p><strong>Progression:</strong> ${blockWeekData.progression || "Take it easy"}</p>
   `;
 
-  // DELOAD WEEK MESSAGE
+  // Deload message
   if (blockWeekData.deload) {
     container.innerHTML += `
       <p style="color: orange;"><strong>DELOAD WEEK:</strong> Reduce weight by 30–40% and focus on technique.</p>
@@ -274,14 +274,79 @@ function advanceWeek() {
 
   if (currentWeek >= 12) {
     alert("Reflection Week: Review PBs, consistency, and plan your next block.");
+    showReflectionDashboard();
     return;
   }
 
   currentWeek++;
   localStorage.setItem("currentWeek", currentWeek);
 
-  alert(`Week advanced to Week ${currentWeek}`);
+  if (currentWeek === 12) {
+    alert("Reflection Week: Review PBs, consistency, and plan your next block.");
+    showReflectionDashboard();
+  } else {
+    alert(`Week advanced to Week ${currentWeek}`);
+  }
+
   document.getElementById("weekAdvanceArea").innerHTML = "";
+}
+
+// -------------------------------
+// REFLECTION DASHBOARD
+// -------------------------------
+
+function showReflectionDashboard() {
+  const reflection = document.getElementById("reflectionDisplay");
+  const pbData = JSON.parse(localStorage.getItem("pbData")) || {};
+  const weeklyCompletion = JSON.parse(localStorage.getItem("weeklyCompletion")) || {};
+
+  const currentBlock = localStorage.getItem("currentBlock");
+
+  // Consistency
+  const blockWeeks = weeklyCompletion[currentBlock] || {};
+  const weekNumbers = Object.keys(blockWeeks);
+  const totalWeeks = weekNumbers.length;
+  const fullWeeks = weekNumbers.filter(
+    w => ["legs", "push", "pull"].every(d => blockWeeks[w].includes(d))
+  ).length;
+  const consistency = totalWeeks ? Math.round((fullWeeks / totalWeeks) * 100) : 0;
+
+  // PB list
+  const pbList = Object.entries(pbData)
+    .map(([name, pb]) =>
+      `<li><strong>${name}</strong>: ${pb.weight}kg × ${pb.reps} (Vol: ${pb.volume})`
+    )
+    .join("");
+
+  reflection.innerHTML = `
+    <h2>Block Reflection</h2>
+    <p><strong>Consistency:</strong> ${consistency}% of weeks fully completed</p>
+
+    <h3>Personal Bests</h3>
+    <ul>${pbList || "<li>No PBs logged yet.</li>"}</ul>
+
+    <h3>Next Block Recommendation</h3>
+    <p>If consistency ≥ 80%, increase load or choose a harder block.<br>
+       If consistency < 80%, repeat this block with focus on attendance.</p>
+
+    <button onclick="resetBlock()">Start New Block</button>
+  `;
+}
+
+// -------------------------------
+// RESET BLOCK
+// -------------------------------
+
+function resetBlock() {
+  localStorage.removeItem("currentBlock");
+  localStorage.removeItem("currentWeek");
+  localStorage.removeItem("weeklyCompletion");
+
+  document.getElementById("reflectionDisplay").innerHTML = "";
+  document.getElementById("sessionDisplay").innerHTML = "";
+  document.getElementById("workoutSelector").innerHTML = "";
+
+  loadBlocks().then(blocks => showBlockSelector(blocks));
 }
 
 // -------------------------------
