@@ -50,6 +50,13 @@ function showBlockSelector(blocks) {
 }
 
 function selectBlock(blockName, blocks) {
+
+  // BLOCK LOCKING — prevents switching mid-block
+  if (Number(localStorage.getItem("currentWeek")) > 1) {
+    alert("Block already in progress. Finish the current block before switching.");
+    return;
+  }
+
   localStorage.setItem("currentBlock", blockName);
   localStorage.setItem("currentWeek", 1);
 
@@ -88,7 +95,7 @@ async function loadWorkout(day) {
 
   const workout = workouts.workouts[day];
   const currentBlock = localStorage.getItem("currentBlock");
-  const currentWeek = localStorage.getItem("currentWeek");
+  const currentWeek = Number(localStorage.getItem("currentWeek"));
 
   const blockWeekData = blocks.blocks[currentBlock].weeks[currentWeek - 1];
 
@@ -97,13 +104,23 @@ async function loadWorkout(day) {
     <h2>${day.toUpperCase()} Workout</h2>
     <p><strong>Week ${currentWeek} Rep Scheme:</strong> ${blockWeekData.repScheme || "Deload"}</p>
     <p><strong>Progression:</strong> ${blockWeekData.progression || "Take it easy"}</p>
+  `;
 
+  // DELOAD WEEK MESSAGE
+  if (blockWeekData.deload) {
+    container.innerHTML += `
+      <p style="color: orange;"><strong>DELOAD WEEK:</strong> Reduce weight by 30–40% and focus on technique.</p>
+    `;
+  }
+
+  // Warm-up
+  container.innerHTML += `
     <h3>Warm-Up</h3>
     <ul>${workout.warmup.map(w => `<li>${w}</li>`).join("")}</ul>
-
     <h3>Exercises</h3>
   `;
 
+  // Exercises
   workout.order.forEach(exName => {
     const ex = exercisesData.exercises.find(e => e.name === exName);
 
@@ -131,11 +148,13 @@ async function loadWorkout(day) {
     showLastSet(exName);
   });
 
+  // Stance guide + completion + week advance area
   container.innerHTML += `
     <h3>Stance Guide</h3>
     <p>${workout.stanceGuide}</p>
 
     <button onclick="markWorkoutComplete('${day}')">Mark Workout Complete</button>
+    <div id="weekAdvanceArea"></div>
   `;
 }
 
@@ -221,6 +240,48 @@ function markWorkoutComplete(day) {
   localStorage.setItem(key, JSON.stringify(data));
 
   alert(`${day.toUpperCase()} marked complete for Week ${week}`);
+
+  checkWeekCompletion();
+}
+
+// -------------------------------
+// CHECK IF ALL WORKOUTS ARE DONE
+// -------------------------------
+
+function checkWeekCompletion() {
+  const block = localStorage.getItem("currentBlock");
+  const week = localStorage.getItem("currentWeek");
+
+  const data = JSON.parse(localStorage.getItem("weeklyCompletion")) || {};
+  const completed = data[block]?.[week] || [];
+
+  const required = ["legs", "push", "pull"];
+  const allDone = required.every(day => completed.includes(day));
+
+  if (allDone) {
+    document.getElementById("weekAdvanceArea").innerHTML = `
+      <button onclick="advanceWeek()">Next Week →</button>
+    `;
+  }
+}
+
+// -------------------------------
+// ADVANCE WEEK
+// -------------------------------
+
+function advanceWeek() {
+  let currentWeek = Number(localStorage.getItem("currentWeek"));
+
+  if (currentWeek >= 12) {
+    alert("Reflection Week: Review PBs, consistency, and plan your next block.");
+    return;
+  }
+
+  currentWeek++;
+  localStorage.setItem("currentWeek", currentWeek);
+
+  alert(`Week advanced to Week ${currentWeek}`);
+  document.getElementById("weekAdvanceArea").innerHTML = "";
 }
 
 // -------------------------------
