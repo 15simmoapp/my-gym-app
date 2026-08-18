@@ -1,1 +1,54 @@
-[]
+{
+  "workouts": {
+    "legs": {
+      "order": [
+        "Single-Leg Leg Press",
+        "Hamstring Curl",
+        "Bulgarian Split Squat",
+        "Walking Lunges",
+        "Leg Press",
+        "Leg Extension"
+      ],
+      "warmup": [
+        "Cossack Squats",
+        "Adductor Rockbacks",
+        "Light Single-Leg RDLs"
+      ],
+      "stanceGuide": "VMO emphasis: narrow stance, slight toe-out"
+    },
+
+    "push": {
+      "order": [
+        "Incline Dumbbell Press",
+        "Flat Bench Press",
+        "Machine Chest Press",
+        "Cable Fly",
+        "Overhead Press",
+        "Tricep Rope Extensions"
+      ],
+      "warmup": [
+        "Band Shoulder External Rotations",
+        "Scap Push-Ups",
+        "Light Chest Press"
+      ],
+      "stanceGuide": "Chest focus: elbows 45°, slight arch"
+    },
+
+    "pull": {
+      "order": [
+        "Lat Pulldown",
+        "Seated Row",
+        "Chest-Supported Row",
+        "Face Pulls",
+        "Bicep Curls",
+        "Hammer Curls"
+      ],
+      "warmup": [
+        "Band Lat Activation",
+        "Scap Retractions",
+        "Light Rows"
+      ],
+      "stanceGuide": "Back focus: pull elbows to hips"
+    }
+  }
+}
