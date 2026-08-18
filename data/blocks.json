@@ -1,1 +1,57 @@
-[]
+{
+  "blocks": {
+    "balanced": {
+      "focus": "Balanced Push/Pull/Legs",
+      "weeks": [
+        { "week": 1, "repScheme": "10-12", "progression": "add 1 rep" },
+        { "week": 2, "repScheme": "8-10", "progression": "add 2.5kg" },
+        { "week": 3, "repScheme": "12-15", "progression": "increase volume" },
+        { "week": 4, "deload": true },
+        { "week": 5, "repScheme": "10-12", "progression": "add 1 rep" },
+        { "week": 6, "repScheme": "8-10", "progression": "add 2.5kg" },
+        { "week": 7, "repScheme": "12-15", "progression": "increase volume" },
+        { "week": 8, "deload": true },
+        { "week": 9, "repScheme": "10-12", "progression": "add 1 rep" },
+        { "week": 10, "repScheme": "8-10", "progression": "add 2.5kg" },
+        { "week": 11, "repScheme": "12-15", "progression": "increase volume" },
+        { "week": 12, "reflection": true }
+      ]
+    },
+
+    "chestFocused": {
+      "focus": "Chest Hypertrophy",
+      "weeks": [
+        { "week": 1, "repScheme": "12-15", "progression": "add 1 rep" },
+        { "week": 2, "repScheme": "8-10", "progression": "add 2.5kg" },
+        { "week": 3, "repScheme": "15-20", "progression": "increase volume" },
+        { "week": 4, "deload": true },
+        { "week": 5, "repScheme": "10-12", "progression": "add 1 rep" },
+        { "week": 6, "repScheme": "8-10", "progression": "add 2.5kg" },
+        { "week": 7, "repScheme": "12-15", "progression": "increase volume" },
+        { "week": 8, "deload": true },
+        { "week": 9, "repScheme": "10-12", "progression": "add 1 rep" },
+        { "week": 10, "repScheme": "8-10", "progression": "add 2.5kg" },
+        { "week": 11, "repScheme": "12-15", "progression": "increase volume" },
+        { "week": 12, "reflection": true }
+      ]
+    },
+
+    "legFocused": {
+      "focus": "Legs + VMO/Adductor Growth",
+      "weeks": [
+        { "week": 1, "repScheme": "10-12", "progression": "add 1 rep" },
+        { "week": 2, "repScheme": "8-10", "progression": "add 2.5kg" },
+        { "week": 3, "repScheme": "12-15", "progression": "increase volume" },
+        { "week": 4, "deload": true },
+        { "week": 5, "repScheme": "10-12", "progression": "add 1 rep" },
+        { "week": 6, "repScheme": "8-10", "progression": "add 2.5kg" },
+        { "week": 7, "repScheme": "12-15", "progression": "increase volume" },
+        { "week": 8, "deload": true },
+        { "week": 9, "repScheme": "10-12", "progression": "add 1 rep" },
+        { "week": 10, "repScheme": "8-10", "progression": "add 2.5kg" },
+        { "week": 11, "repScheme": "12-15", "progression": "increase volume" },
+        { "week": 12, "reflection": true }
+      ]
+    }
+  }
+}
