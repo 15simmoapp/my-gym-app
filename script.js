@@ -31,10 +31,27 @@ async function loadWorkout(day) {
       <p><strong>Cues:</strong> ${ex.cues.join(", ")}</p>
       <p><strong>Progression:</strong> ${ex.progression}</p>
       ${ex.gif ? `<img src="${ex.gif}" class="exerciseGif">` : ""}
+
+      <div class="logArea">
+        <input type="number" id="w_${ex.name}" placeholder="Weight (kg)">
+        <input type="number" id="r_${ex.name}" placeholder="Reps">
+        <input type="number" id="p_${ex.name}" placeholder="RPE">
+        <button onclick="logSet('${ex.name}')">Log Set</button>
+      </div>
+
+      <div id="last_${ex.name}" class="lastSet"></div>
     `;
 
     container.appendChild(div);
+    showLastSet(exName);
   });
+
+  container.innerHTML += `
+    <h3>Stance Guide</h3>
+    <p>${workout.stanceGuide}</p>
+    <button onclick="markWorkoutComplete('${day}')">Mark Workout Complete</button>
+  `;
+}
 
   container.innerHTML += `
     <h3>Stance Guide</h3>
