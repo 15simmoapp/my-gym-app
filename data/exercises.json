@@ -1,1 +1,52 @@
-[]
+{
+  "exercises": [
+    {
+      "name": "Single-Leg Leg Press",
+      "muscles": ["quads", "VMO"],
+      "cues": ["knee over toe", "slow eccentric", "drive through mid-foot"],
+      "gif": "images/single_leg_press.gif",
+      "category": "legs",
+      "progression": "add 2.5kg or +1 rep weekly"
+    },
+    {
+      "name": "Hamstring Curl",
+      "muscles": ["hamstrings"],
+      "cues": ["hips down", "control the eccentric"],
+      "gif": "images/hamstring_curl.gif",
+      "category": "legs",
+      "progression": "add 1 rep weekly"
+    },
+    {
+      "name": "Bulgarian Split Squat",
+      "muscles": ["quads", "glutes", "adductors"],
+      "cues": ["chest tall", "neutral pelvis", "push through front heel"],
+      "gif": "images/bulgarian.gif",
+      "category": "legs",
+      "progression": "add 2.5kg or +1 rep weekly"
+    },
+    {
+      "name": "Walking Lunges",
+      "muscles": ["quads", "glutes", "VMO"],
+      "cues": ["shorter steps", "upright torso", "knee over big toe"],
+      "gif": "images/lunges.gif",
+      "category": "legs",
+      "progression": "increase distance or reps"
+    },
+    {
+      "name": "Leg Press",
+      "muscles": ["quads"],
+      "cues": ["low foot placement", "narrow stance"],
+      "gif": "images/legpress.gif",
+      "category": "legs",
+      "progression": "add 5kg weekly"
+    },
+    {
+      "name": "Leg Extension",
+      "muscles": ["quads", "VMO"],
+      "cues": ["toes slightly out", "pause at top"],
+      "gif": "images/leg_extension.gif",
+      "category": "legs",
+      "progression": "add 1–2 reps weekly"
+    }
+  ]
+}
